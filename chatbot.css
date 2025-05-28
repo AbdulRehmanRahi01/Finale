@@ -1,0 +1,534 @@
+/* Floating Support Button */
+.support-button {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.support-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+/* Base styling for social icons */
+.social-icons-left, 
+.social-icons-right {
+  z-index: 900;
+  position: fixed;
+  transition: z-index 0.1s;
+}
+
+/* Chat Container */
+.chat-container {
+  display: none;
+  position: fixed;
+  bottom: 100px;
+  left: 10px;
+  width: 360px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  z-index: 99999; /* Super high z-index */
+  transform: translateY(20px);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+  max-height: calc(100vh - 120px); /* Prevent overflow on small screens */
+}
+
+.chat-container.active {
+  display: block; 
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* When chatbot is open, force social icons to stay behind */
+body.chat-open .social-icons-left,
+body.chat-open .social-icons-right {
+  z-index: 0 !important;
+}
+
+/* Remove the overlay */
+.chat-overlay {
+  display: none !important;
+}
+
+/* Header */
+.chat-header {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  padding: 15px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 100001; /* Ensure header is on top */
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column; /* Stack vertically on small screens */
+  align-items: flex-start;
+}
+
+.chat-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 250px; /* Prevent long titles from overflowing */
+}
+
+.online-status {
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-left: 0;
+  margin-top: 5px;
+}
+
+.close-chat {
+  cursor: pointer;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: white;
+  padding: 0;
+  margin-left: 10px;
+  flex-shrink: 0;
+}
+
+/* Profile icon styling */
+.profile-icon {
+  width: 70px;
+  height: 70px;
+  background-color: #25D366; /* WhatsApp green */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 100001; /* Ensure on top */
+}
+
+.profile-icon i {
+  font-size: 40px;
+  color: white;
+}
+
+/* Facebook icon styling */
+.facebook-icon {
+  width: 70px;
+  height: 70px;
+  background-color: #1877F2;
+  border-radius: 20px; /* Rounded square like in the image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 25px; /* Position to the left like in the image */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 100001; /* Ensure on top */
+}
+
+.facebook-icon i {
+  font-size: 40px;
+  color: white;
+}
+
+/* Time */
+.chat-time {
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  padding: 10px 0;
+  margin-top: 5px;
+  position: relative;
+  z-index: 100001; /* Ensure on top */
+}
+
+/* Chat Content */
+.chat-content {
+  padding: 0 15px;
+  position: relative;
+  z-index: 100001; /* Ensure on top */
+  max-height: 40vh; /* Limit height on small screens */
+  overflow-y: auto; /* Allow scrolling if content is too long */
+}
+
+.chat-message {
+  padding: 15px;
+  margin: 5px 0;
+  border-radius: 18px;
+  background: #f0f0f0;
+  color: #333;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  text-align: left;
+  max-width: 90%;
+  word-wrap: break-word; /* Ensure long words don't overflow */
+}
+
+.message-text {
+  font-size: 15px;
+}
+
+.chat-message strong {
+  font-weight: 600;
+  color: #000;
+}
+
+/* Button Styles */
+.contact-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 15px 20px;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 10px;
+  position: relative;
+  z-index: 100001; /* Ensure on top */
+}
+
+.contact-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 0;
+  border-radius: 50px; /* More rounded like in the image */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  color: white; /* Text color set to white */
+  font-weight: 500;
+  font-size: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  min-width: 0;
+  text-align: center;
+}
+
+/* WhatsApp button styling */
+.contact-btn.whatsapp {
+  background-color: #25D366;
+}
+
+/* Telegram button styling */
+.contact-btn.telegram {
+  background-color: #0088cc;
+}
+
+/* Removing icons from buttons as they're not visible in the image */
+.contact-btn span {
+  color: white; /* Ensuring text is white */
+  font-weight: 600; /* Making text slightly bolder to match image */
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Enhanced Responsive Styling */
+
+/* Large Desktop Screens */
+@media (min-width: 1600px) {
+  .support-button {
+    bottom: 40px;
+    left: 40px;
+    width: 70px;
+    height: 70px;
+    font-size: 28px;
+  }
+  
+  .chat-container {
+    bottom: 120px;
+    left: 20px;
+    width: 400px;
+  }
+}
+
+/* Standard Desktop */
+@media (max-width: 1200px) {
+  .chat-container {
+    max-height: calc(100vh - 150px);
+  }
+}
+
+/* Tablet Landscape */
+@media (max-width: 992px) {
+  .support-button {
+    bottom: 25px;
+    left: 25px;
+    width: 55px;
+    height: 55px;
+    font-size: 22px;
+  }
+  
+  .chat-container {
+    bottom: 90px;
+  }
+}
+
+/* Tablet Portrait */
+@media (max-width: 768px) {
+  .support-button {
+    bottom: 20px;
+    left: 20px;
+  }
+  
+  .chat-container {
+    bottom: 85px;
+    left: 5px;
+    width: 350px;
+  }
+  
+  .profile-icon, .facebook-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .profile-icon i, .facebook-icon i {
+    font-size: 35px;
+  }
+}
+
+/* Mobile Landscape */
+@media (max-width: 576px) {
+  .support-button {
+    bottom: 15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .chat-container {
+    width: 330px;
+    bottom: 75px;
+    left: 5px;
+    max-height: 80vh;
+  }
+  
+  .chat-header h3 {
+    font-size: 15px;
+    max-width: 200px;
+  }
+  
+  .online-status {
+    font-size: 11px;
+  }
+  
+  .contact-btn {
+    padding: 12px 0;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 480px) {
+  .chat-container {
+    width: calc(100% - 20px); /* Full width minus margins */
+    left: 10px;
+    right: 10px;
+    bottom: 70px;
+  }
+  
+  .chat-content {
+    max-height: 35vh;
+  }
+  
+  .contact-buttons {
+    padding: 10px 10px 15px;
+    gap: 8px;
+  }
+  
+  .contact-btn {
+    padding: 12px 0;
+    font-size: 14px;
+  }
+  
+  .header-text {
+    max-width: calc(100% - 30px);
+  }
+  
+  /* Stack header items on very small screens */
+  .chat-header {
+    padding: 10px;
+  }
+  
+  .profile-icon, .facebook-icon {
+    width: 50px;
+    height: 50px;
+    margin: 8px auto;
+  }
+  
+  .profile-icon i, .facebook-icon i {
+    font-size: 30px;
+  }
+}
+
+/* Very Small Mobile Screens */
+@media (max-width: 380px) {
+  .support-button {
+    bottom: 10px;
+    left: 10px;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  
+  .chat-container {
+    bottom: 65px;
+  }
+  
+  .contact-btn {
+    font-size: 13px;
+    padding: 10px 0;
+  }
+  
+  .chat-message {
+    padding: 12px;
+  }
+  
+  .message-text {
+    font-size: 14px;
+  }
+  
+  .chat-header h3 {
+    font-size: 14px;
+    max-width: 180px;
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 320px) {
+  .chat-container {
+    width: calc(100% - 10px);
+    left: 5px;
+    right: 5px;
+  }
+  
+  .contact-buttons {
+    flex-direction: column; /* Stack buttons on extremely small screens */
+    gap: 5px;
+  }
+  
+  .contact-btn {
+    width: 100%;
+  }
+  
+  .chat-header h3 {
+    max-width: 150px;
+  }
+  
+  .online-status {
+    padding: 2px 6px;
+    margin-top: 3px;
+  }
+}
+
+/* Handle Landscape Orientation on Mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .support-button {
+    bottom: 10px;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .chat-container {
+    bottom: 60px;
+    max-height: 80vh;
+    width: 300px;
+  }
+  
+  .profile-icon, .facebook-icon {
+    width: 45px;
+    height: 45px;
+    margin: 5px auto;
+  }
+  
+  .profile-icon i, .facebook-icon i {
+    font-size: 25px;
+  }
+  
+  .chat-content {
+    max-height: 30vh;
+  }
+}
+
+/* Special handling for devices with notches */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .support-button {
+    bottom: calc(30px + env(safe-area-inset-bottom));
+  }
+  
+  .chat-container {
+    bottom: calc(100px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Ensure the chatbot works well with screen readers */
+@media speech {
+  .chat-container {
+    border: 1px solid #000;
+  }
+  
+  .close-chat {
+    color: #fff;
+    background: #000;
+  }
+}
+
+/* Handle high contrast mode for accessibility */
+@media (forced-colors: active) {
+  .support-button,
+  .chat-header,
+  .contact-btn {
+    border: 2px solid ButtonText;
+  }
+}
+
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .support-button,
+  .chat-container,
+  .contact-btn {
+    transition: none;
+  }
+  
+  .support-button:hover,
+  .contact-btn:hover {
+    transform: none;
+  }
+}
