@@ -1,0 +1,364 @@
+/* Footer Style - Complete solution with proper alignment */
+
+/* Basic structure to ensure footer stays at bottom */
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/* Reset for footer elements */
+.site-footer,
+.footer-container,
+.footer-brand,
+.footer-contact,
+.footer-social,
+.footer-copyright {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Footer styling with exact alignment */
+.site-footer {
+  flex-shrink: 0;
+  width: 100%;
+  background: #010080; /* Deep navy blue */
+  color: white;
+  padding: 50px 0 20px; /* Exact padding */
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center all content by default to match image */
+}
+
+/* Container with exact alignment */
+.footer-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  column-gap: 5%;
+  padding: 0 15px; /* Added padding for smallest screens */
+}
+
+/* Brand section */
+.footer-brand {
+  grid-column: 1;
+}
+
+.footer-brand .logo {
+  font-size: clamp(20px, 4vw, 24px); /* Responsive font size */
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-brand .logo i {
+  color: #87CEEB;
+  font-size: clamp(22px, 4vw, 28px); /* Responsive icon size */
+}
+
+.footer-brand p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: clamp(12px, 3vw, 14px); /* Responsive text */
+  margin: 0;
+  line-height: 1.5;
+  max-width: 100%; /* Ensure text doesn't overflow */
+}
+
+/* Contact section */
+.footer-contact {
+  grid-column: 2;
+}
+
+.footer-contact h3 {
+  font-size: clamp(16px, 3.5vw, 18px); /* Responsive heading */
+  font-weight: 600;
+  margin: 0 0 12px 0;
+}
+
+.footer-email {
+  color: #87CEEB;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: clamp(12px, 3vw, 14px); /* Responsive text */
+  word-break: break-word; /* Prevent overflow on tiny screens */
+}
+
+.footer-email:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Social section */
+.footer-social {
+  grid-column: 3;
+}
+
+.footer-social h3 {
+  font-size: clamp(16px, 3.5vw, 18px); /* Responsive heading */
+  font-weight: 600;
+  margin: 0 0 12px 0;
+  text-align: center; /* Center the "Follow Us" heading */
+}
+
+/* Always center social icons to match the image */
+.footer-social .social-icons {
+  display: flex;
+  gap: clamp(6px, 2vw, 10px); /* Responsive gap */
+  margin: 0 auto; /* Center the container */
+  padding: 0;
+  list-style: none;
+  flex-wrap: nowrap; /* UPDATED: Prevent wrapping to keep icons in one row */
+  justify-content: center; /* Always center the icons */
+}
+
+.footer-social .social-icons a {
+  font-size: clamp(14px, 3vw, 16px); /* Responsive icon size */
+  width: clamp(32px, 8vw, 40px); /* Responsive width */
+  height: clamp(32px, 8vw, 40px); /* Responsive height */
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  margin: 0 5px; /* UPDATED: Even margin on both sides for consistent spacing */
+}
+
+.footer-social .social-icons a:hover {
+  background: #1877f2;
+  transform: translateY(-3px);
+}
+
+/* Copyright section */
+.footer-copyright {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-top: 20px;
+  margin-top: clamp(25px, 5vw, 40px); /* Responsive margin */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: clamp(11px, 2.5vw, 14px); /* Responsive text */
+  color: rgba(255, 255, 255, 0.8);
+  word-wrap: break-word; /* Ensure text doesn't overflow */
+}
+
+/* Remove any unwanted styling */
+.site-footer a {
+  text-decoration: none;
+}
+
+/* Override fix for social icons */
+.site-footer .social-icons {
+  position: static !important;
+  transform: none !important;
+  z-index: 1 !important;
+  display: flex !important;
+  justify-content: center !important; /* Always center icons */
+  flex-wrap: nowrap !important; /* UPDATED: Prevent wrapping to keep icons in one row */
+  margin: 0 auto !important;
+  max-width: 200px; /* ADDED: Limit width to ensure icons stay in one row */
+}
+
+.site-footer .social-icons a {
+  animation: none !important;
+  box-shadow: none !important;
+  margin: 0 5px !important; /* UPDATED: Equal margin on all sides */
+  position: static !important;
+  transform: none !important;
+  flex: 0 0 auto !important; /* ADDED: Prevent shrinking/growing */
+}
+
+.site-footer .social-icons a i {
+  animation: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Enhanced responsive layout with more breakpoints */
+/* Large desktop and beyond */
+@media (min-width: 1400px) {
+  .footer-container {
+    max-width: 1320px;
+    column-gap: 6%;
+  }
+}
+
+/* Medium-large screens */
+@media (max-width: 1200px) and (min-width: 993px) {
+  .footer-container {
+    column-gap: 4%;
+  }
+  
+  /* Ensure social icons are centered even at this breakpoint */
+  .footer-social .social-icons {
+    justify-content: center;
+  }
+}
+
+/* Regular tablets and smaller desktops */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 20px;
+  }
+  
+  /* Center social icons */
+  .footer-social .social-icons {
+    justify-content: center;
+  }
+}
+
+/* Small tablets */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .footer-brand, .footer-contact, .footer-social {
+    grid-column: 1;
+    padding: 0 20px;
+  }
+  
+  .footer-brand .logo {
+    justify-content: center;
+  }
+  
+  /* Ensure social icons are centered */
+  .footer-social .social-icons {
+    justify-content: center;
+    max-width: 100%; /* UPDATED: Allow full width on smaller screens */
+  }
+  
+  .footer-copyright {
+    margin-top: 30px;
+  }
+
+  .site-footer {
+    padding: 40px 0 20px;
+  }
+}
+
+/* Large phones */
+@media (max-width: 576px) {
+  .site-footer {
+    padding: 35px 0 18px;
+  }
+  
+  .footer-container {
+    width: 95%;
+    gap: 25px;
+  }
+  
+  .footer-brand, .footer-contact, .footer-social {
+    padding: 0 15px;
+  }
+  
+  /* Maintain centered social icons */
+  .footer-social .social-icons {
+    justify-content: center;
+    gap: 10px; /* UPDATED: Ensure consistent gap */
+  }
+
+  /* ADDED: Force icons to stay in line */
+  .footer-social .social-icons a {
+    width: 35px !important;
+    height: 35px !important;
+    margin: 0 3px !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  .site-footer {
+    padding: 30px 0 15px;
+  }
+  
+  .footer-container {
+    width: 100%;
+    gap: 20px;
+  }
+  
+  .footer-brand, .footer-contact, .footer-social {
+    padding: 0 10px;
+  }
+  
+  .footer-copyright {
+    margin-top: 25px;
+    padding: 0 10px;
+  }
+  
+  /* Ensure social icons remain centered and in a single row */
+  .footer-social .social-icons {
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: nowrap !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 375px) {
+  .site-footer {
+    padding: 25px 0 12px;
+  }
+  
+  .footer-container {
+    gap: 15px;
+  }
+  
+  .footer-social .social-icons {
+    gap: 4px;
+    justify-content: center;
+  }
+
+  /* ADDED: Adjust icon size on smallest screens */
+  .footer-social .social-icons a {
+    width: 30px !important;
+    height: 30px !important;
+    margin: 0 2px !important;
+    font-size: 12px !important;
+  }
+}
+
+/* Alternative simplified layout that matches the image more closely */
+@media (max-width: 768px) {
+  .footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .footer-brand, .footer-contact, .footer-social {
+    width: 100%;
+  }
+
+  /* ADDED: Ensure icons stay in a single row */
+  .footer-social .social-icons {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+  }
+}
