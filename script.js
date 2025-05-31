@@ -1,3 +1,36 @@
+// Enhanced Menu Toggle Functionality - Added 2025-05-31
+document.addEventListener('DOMContentLoaded', function() {
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (menuToggle && navLinks) {
+    // Remove any existing event listeners
+    const newMenuToggle = menuToggle.cloneNode(true);
+    menuToggle.parentNode.replaceChild(newMenuToggle, menuToggle);
+    
+    // Add fresh event listener
+    newMenuToggle.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent event bubbling
+      this.classList.toggle('active');
+      navLinks.classList.toggle('active');
+      
+      // Prevent scrolling when menu is open
+      document.body.classList.toggle('menu-open');
+      if (document.body.classList.contains('menu-open')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    });
+  }
+  
+  // Fix z-index issues for mobile
+  document.querySelectorAll('.navbar, .chat-container, .support-button, .site-footer')
+    .forEach(el => {
+      if (el) el.style.zIndex = parseInt(getComputedStyle(el).zIndex || 0) || 10;
+    });
+});
+
 // Force scroll to top on page refresh
 (function() {
   // Save current page position before unload
@@ -449,33 +482,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }, 300);
   
-  // =============== RESPONSIVE MENU TOGGLE ===============
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinksContainer = document.querySelector('.nav-links');
-  
-  if (menuToggle && navLinksContainer) {
-    menuToggle.addEventListener('click', () => {
-      navLinksContainer.classList.toggle('active');
-      menuToggle.classList.toggle('active');
-    });
-  }
-  
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (navLinksContainer && navLinksContainer.classList.contains('active') && 
-        !e.target.closest('.nav-links') && 
-        !e.target.closest('.menu-toggle')) {
-      navLinksContainer.classList.remove('active');
-      if (menuToggle) {
-        menuToggle.classList.remove('active');
-      }
+  // =============== MOBILE OPTIMIZATIONS ===============
+  // Ensure proper display of mobile elements
+  if (window.innerWidth <= 768) {
+    // Fix support button and chatbot visibility
+    const supportButton = document.getElementById('supportButton');
+    if (supportButton) {
+      supportButton.style.display = 'flex';
+      supportButton.style.zIndex = '999';
     }
-  });
-  
-  // =============== UPDATE COPYRIGHT YEAR ===============
-  const copyrightYear = document.getElementById('year');
-  if (copyrightYear) {
-    copyrightYear.textContent = new Date().getFullYear();
+    
+    // Force footer visibility
+    const footer = document.querySelector('.site-footer');
+    if (footer) {
+      footer.style.display = 'block';
+      footer.style.visibility = 'visible';
+      footer.style.opacity = '1';
+    }
   }
 });
 
@@ -494,6 +517,21 @@ style.innerHTML = `
   body.chat-open .social-icons-left,
   body.chat-open .social-icons-right {
     z-index: 0 !important;
+  }
+  
+  /* Mobile fixes added 2025-05-31 */
+  @media screen and (max-width: 768px) {
+    .support-button {
+      display: flex !important;
+      z-index: 999 !important;
+      position: fixed !important;
+    }
+    
+    .site-footer {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
   }
 `;
 document.head.appendChild(style);

@@ -514,3 +514,32 @@ body.chat-open .social-icons-right {
     max-height: 30vh;
   }
 }
+
+/* Mobile Optimization for Chatbot - Added 2025-05-31 */
+@media screen and (max-width: 768px) {
+  /* Make support button visible on mobile */
+  .support-button {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    z-index: 999; /* Ensure it's above other elements */
+    display: flex !important; /* Force display */
+  }
+  
+  /* Adjust chat container for mobile */
+  .chat-container {
+    width: 90% !important; /* Width relative to screen */
+    max-width: 350px;
+    right: 5% !important;
+    bottom: 80px !important; /* Position above the support button */
+    max-height: 70vh !important; /* Limit height */
+  }
+  
+  /* Make sure chat content is scrollable */
+  .chat-content {
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+}

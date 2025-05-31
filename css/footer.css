@@ -362,3 +362,30 @@ main {
     justify-content: center !important;
   }
 }
+
+/* Footer Mobile Fix - Added 2025-05-31 */
+@media screen and (max-width: 768px) {
+  .site-footer {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    margin-top: 40px;
+  }
+  
+  /* Better spacing in mobile footer */
+  .footer-container {
+    padding: 30px 15px 10px;
+    gap: 20px;
+  }
+  
+  .footer-brand, .footer-contact, .footer-social {
+    text-align: center;
+    width: 100%;
+  }
+  
+  .footer-copyright {
+    margin-top: 20px;
+    padding-top: 15px;
+  }
+}

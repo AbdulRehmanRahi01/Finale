@@ -192,29 +192,18 @@ body.chat-open .social-icons-right {
   z-index: 0 !important; /* Force below chatbot */
 }
 
-<<<<<<< HEAD
 /* .social-icons-left {
-=======
-.social-icons-left {
->>>>>>> b70c645dee394802a87da25431caeaac7557bbf5
   left: 40px;
 }
 
 .social-icons-right {
   right: 40px;
-<<<<<<< HEAD
 } */
 
 /* Individual Social Icon Styling - Updated Design with Larger Icons */
 /* .social-icon {
-=======
-}
-
-/* Individual Social Icon Styling - Updated Design with Larger Icons */
-.social-icon {
->>>>>>> b70c645dee394802a87da25431caeaac7557bbf5
   font-size: 3.2rem; /* Increased icon size */
-  width: 80px;
+  /* width: 80px;
   height: 80px;
   display: flex;
   align-items: center;
@@ -230,37 +219,21 @@ body.chat-open .social-icons-right {
   overflow: hidden;
   background-size: cover;
   background-position: center;
-<<<<<<< HEAD
   text-decoration: none; 
-} */
+} */ */
 
 /* Facebook Icon - Updated Style */
 /* .social-icons-right .social-icon {
   background: #1877f2; 
-=======
-  text-decoration: none; /* Remove underlines */
-}
-
-/* Facebook Icon - Updated Style */
-.social-icons-right .social-icon {
-  background: #1877f2; /* Solid blue for Facebook */
->>>>>>> b70c645dee394802a87da25431caeaac7557bbf5
   border-radius: 20px;
   box-shadow: 0 10px 25px rgba(24, 119, 242, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
 } */
 
 /* Instagram Icon - Keeping original vibrant style */
 /* .social-icons-left .social-icon {
-=======
-}
-
-/* Instagram Icon - Keeping original vibrant style */
-.social-icons-left .social-icon {
->>>>>>> b70c645dee394802a87da25431caeaac7557bbf5
   background: radial-gradient(circle at 30% 107%, 
     #fdf497 0%, #fdf497 5%, 
     #fd5949 45%, #d6249f 60%, 
@@ -271,7 +244,6 @@ body.chat-open .social-icons-right {
   align-items: center;
   justify-content: center;
 }
-<<<<<<< HEAD
  */
 /* Remove any dots or default styling */
 /* .social-icons-left a, .social-icons-right a {
@@ -281,24 +253,12 @@ body.chat-open .social-icons-right {
 
 /* Ensure icons don't have additional styling */
 /* .fa-facebook, .fa-instagram {
-=======
-
-/* Remove any dots or default styling */
-.social-icons-left a, .social-icons-right a {
-  text-decoration: none;
-  display: block;
-}
-
-/* Ensure icons don't have additional styling */
-.fa-facebook, .fa-instagram {
->>>>>>> b70c645dee394802a87da25431caeaac7557bbf5
   border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
-<<<<<<< HEAD
   background: none; /* Remove any background from the icon itself 
 } */
 
@@ -308,17 +268,6 @@ body.chat-open .social-icons-right {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
   filter: brightness(1.1);
 } */
-=======
-  background: none; /* Remove any background from the icon itself */
-}
-
-/* Refined Hover Effect */
-.social-icon:hover {
-  transform: scale(1.05) translateY(-5px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
-  filter: brightness(1.1);
-}
->>>>>>> b70c645dee394802a87da25431caeaac7557bbf5
 
 /* Floating Animation */
 @keyframes gentleFloat {
@@ -619,17 +568,10 @@ html.modal-is-open .contact-button {
     border-radius: 15px;
   }
   
-<<<<<<< HEAD
   /* Modified positioning for social icons */
   .social-icons-left, .social-icons-right {
     position: absolute;
     top: 140px; /* Fixed position relative to top instead of bottom */
-=======
-  /* Adjust spacing of social icons on mobile */
-  .social-icons-left, .social-icons-right {
-    top: auto;
-    bottom: 30px;
->>>>>>> b70c645dee394802a87da25431caeaac7557bbf5
   }
 }
 
@@ -692,11 +634,7 @@ html.modal-is-open .contact-button {
 /* For iPhone SE and other very small devices */
 @media screen and (max-width: 360px) and (max-height: 640px) {
   .social-icons-left, .social-icons-right {
-<<<<<<< HEAD
     top: 120px; /* Adjust for very small devices */
-=======
-    bottom: 10px;
->>>>>>> b70c645dee394802a87da25431caeaac7557bbf5
   }
   
   .social-icon {
@@ -709,12 +647,7 @@ html.modal-is-open .contact-button {
 /* Ensure social icons don't overlap on landscape orientation */
 @media screen and (max-height: 500px) {
   .social-icons-left, .social-icons-right {
-<<<<<<< HEAD
     top: 120px; /* Fixed position for landscape orientation */
-=======
-    top: auto;
-    bottom: 20px;
->>>>>>> b70c645dee394802a87da25431caeaac7557bbf5
   }
   
   .hero {
@@ -748,19 +681,11 @@ html.modal-is-open .contact-button {
 }
 
 /* Support for dark mode preferences */
-<<<<<<< HEAD
 /* @media (prefers-color-scheme: dark) {
   body {
     background: linear-gradient(to right, #1a1a2e, #16213e);
   }
 } */
-=======
-@media (prefers-color-scheme: dark) {
-  body {
-    background: linear-gradient(to right, #1a1a2e, #16213e);
-  }
-}
->>>>>>> b70c645dee394802a87da25431caeaac7557bbf5
 
 /* Print styles - hide unnecessary elements when printing */
 @media print {
@@ -775,5 +700,94 @@ html.modal-is-open .contact-button {
   
   .hero {
     padding: 1rem;
+  }
+}
+/* Mobile Navigation Styles - Added for mobile hamburger menu */
+.menu-toggle {
+  display: none; /* Hidden by default on desktop */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile-specific styles */
+@media screen and (max-width: 768px) {
+  /* Reset some existing mobile styles for navbar */
+  .navbar {
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 5% !important;
+  }
+  
+  .navbar .logo {
+    margin-bottom: 0 !important;
+  }
+  
+  /* Show hamburger menu */
+  .menu-toggle {
+    display: flex;
+  }
+  
+  /* Full-screen mobile menu */
+  .navbar .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000080;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 25px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    padding: 50px 0;
+    margin: 0 !important;
+  }
+  
+  .navbar .nav-links.active {
+    transform: translateX(0);
+  }
+  
+  .navbar .nav-links li {
+    margin: 10px 0 !important;
+  }
+  
+  .navbar .nav-links li a {
+    font-size: 18px;
+    padding: 12px 20px;
+  }
+  
+  /* Hamburger animation */
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  
+  /* Prevent body scrolling when menu is open */
+  body.menu-open {
+    overflow: hidden;
   }
 }
