@@ -208,7 +208,7 @@ body {
     color: #555;
     text-align: justify;
     position: relative;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .product-description::after {
@@ -277,25 +277,33 @@ body {
     .table-container {
         max-width: 98vw;
     }
+
     .table-row {
         padding: 12px 6px;
     }
 }
+
 @media (max-width: 900px) {
     .table-row {
         flex-wrap: wrap;
         padding: 10px 3px;
     }
+
     .product {
         min-width: 120px;
     }
+
     .product-info {
         max-width: 130px;
     }
-    .stock, .price, .action {
+
+    .stock,
+    .price,
+    .action {
         min-width: 60px;
         font-size: 13px;
     }
+
     .popular-badge {
         font-size: 12px;
         padding: 4px 0;
@@ -304,6 +312,7 @@ body {
         width: 140px;
     }
 }
+
 /* Key part for center alignment on mobile/tablet */
 @media (max-width: 768px) {
     .table-container {
@@ -311,19 +320,108 @@ body {
         margin: 24px 0;
         border-radius: 8px;
     }
+
     .table-header {
         padding: 10px;
     }
+
     .table-header h2 {
         font-size: 17px;
     }
+
     .table-row {
+        display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        padding: 12px 5vw;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+        align-items: center;
+        padding: 16px 4vw;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+        margin: 0 3vw 5px;
+        border: 1px solid #f0f0f2;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
     }
-    .product, .stock, .price, .action {
+
+    .table-row:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .table-row:last-child {
+        margin-bottom: 0;
+    }
+
+    .table-row .table-cell {
+        width: 100%;
+        height: auto;
+        gap: 8px;
+        padding: 5px 0;
+        font-family: 'Poppins', sans-serif;
+        font-size: 14px;
+        opacity: 0;
+        animation: fadeIn 0.5s ease forwards;
+    }
+
+    .table-row .table-cell .product-icon {
+        width: 50px;
+        height: 36px;
+        font-size: 16px;
+        margin-right: 10px;
+        border-radius: 12px;
+        margin-right: 10px;
+    }
+    .table-row .table-cell .product-text
+    {
+        text-align: justify;
+    }
+    .table-row .stock{
+        background-color: #f2f5fd;
+        width: 100%;
+        font-weight: 400;
+        padding: 10px 0;
+    }
+    .table-row .price{
+        background-color: #f2f5fd;
+        width: 100%;
+        font-weight: 400;
+        padding: 10px 0;
+        margin-top: 0;
+    }
+    .table-row .action {
+        width: 100%;
+        position: relative;
+    }
+    .table-row .action .buy-btn {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+    .table-row .action .circular-dropdown
+    {
+        position: absolute;
+        right: 10px;
+        background-color: #fff;
+        border: none;
+        color: #000080;
+    }
+    /* Fade-in animation for table-cell content */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .product,
+    .stock,
+    .price,
+    .action {
         width: 100%;
         min-width: unset;
         justify-content: center !important;
@@ -331,13 +429,16 @@ body {
         margin-bottom: 7px;
         display: flex;
     }
-    .stock, .price {
+
+    .stock,
+    .price {
         justify-content: center;
         align-items: center;
         text-align: center;
         margin-bottom: 7px;
         width: 100%;
     }
+
     .action {
         justify-content: center !important;
         align-items: center !important;
@@ -346,7 +447,9 @@ body {
         width: 100%;
         margin-bottom: 0;
     }
-    .buy-btn, .buy-btn.out-of-stock {
+
+    .buy-btn,
+    .buy-btn.out-of-stock {
         margin: 0 !important;
         display: inline-flex;
         justify-content: center;
@@ -355,16 +458,20 @@ body {
         padding: 8px 0;
         font-size: 13px;
     }
+
     .circular-dropdown {
         margin-left: 0;
     }
+
     .product-description {
         padding: 14px 2vw;
         font-size: 13px;
     }
+
     .product-info {
         max-width: none;
     }
+
     .popular-badge {
         font-size: 11px;
         width: 110px;
@@ -372,45 +479,60 @@ body {
         left: -35px;
     }
 }
+
 @media (max-width: 500px) {
     .table-container {
-        box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
     }
+
     .table-header h2 {
         font-size: 15px;
     }
+
     .table-row {
         padding: 9px 2vw;
     }
-    .buy-btn, .buy-btn.out-of-stock {
+
+    .buy-btn,
+    .buy-btn.out-of-stock {
         width: 100px;
         padding: 7px 0;
         font-size: 12px;
     }
+
     .circular-dropdown {
         width: 20px;
         height: 20px;
         font-size: 13px;
     }
-    .product-icon, .bm-icon {
+
+    .product-icon,
+    .bm-icon {
         width: 30px;
         height: 30px;
         font-size: 14px;
         margin-right: 8px;
     }
+
     .product-text {
         font-size: 12px;
     }
-    .region, .price, .stock {
+
+    .region,
+    .price,
+    .stock {
         font-size: 12px;
     }
+
     .description-title {
         font-size: 14px;
     }
+
     .product-description {
         font-size: 12px;
         padding: 10px 2vw;
     }
+
     .popular-badge {
         font-size: 10px;
         width: 90px;
@@ -418,25 +540,32 @@ body {
         left: -24px;
     }
 }
+
 @media (max-width: 380px) {
     .table-header h2 {
         font-size: 13px;
     }
-    .buy-btn, .buy-btn.out-of-stock {
+
+    .buy-btn,
+    .buy-btn.out-of-stock {
         width: 80px;
         font-size: 10px;
         padding: 5px 0;
     }
-    .product-icon, .bm-icon {
+
+    .product-icon,
+    .bm-icon {
         width: 22px;
         height: 22px;
         font-size: 10px;
         margin-right: 5px;
     }
+
     .product-description {
         font-size: 10px;
         padding: 8px 1vw;
     }
+
     .popular-badge {
         font-size: 8px;
         width: 60px;
